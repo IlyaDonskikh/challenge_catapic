@@ -1,0 +1,21 @@
+<%= content_tag :h1, 'Send invitation' %>
+
+<%= form_for @invite do |f| %>
+  <% if @invite.errors.any? %>
+    <%= content_tag :div, class: 'errorList' do %>
+      <ul>
+        <% @invite.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+
+  <%= content_tag :div, class: 'field' do %>
+    <%= f.label :email %><br>
+    <%= f.email_field :email %>
+  <% end %>
+
+  <br>
+  <%= f.submit %>
+<% end %>
