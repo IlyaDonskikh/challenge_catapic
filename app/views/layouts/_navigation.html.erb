@@ -1,0 +1,6 @@
+<% if current_user %>
+  <%= content_tag :ul, class: 'navigation' do %>
+    <%= content_tag :li, link_to_unless_current('Cat', cats_path) %>
+    <%= content_tag :li, link_to('Sign out', destroy_user_session_path, method: :delete) %>
+  <% end %>
+<% end %>
