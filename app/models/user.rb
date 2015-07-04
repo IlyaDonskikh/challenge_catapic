@@ -6,4 +6,13 @@ class User < ActiveRecord::Base
 
   ## Relations
   has_many :invites
+
+  ## Etc.
+  def assign_invite!(ref)
+    invite = Invite.find_by(invitee_id: nil, ref: ref)
+
+    return unless invite
+
+    invite.update(invitee_id: id)
+  end
 end

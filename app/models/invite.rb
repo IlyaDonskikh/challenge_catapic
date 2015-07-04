@@ -8,11 +8,11 @@ class Invite < ActiveRecord::Base
   ## Validations
   validates :user, presence: true
   validates :email, format: { with:  /\A(^.+@.+$)\z/i }
-  validate :check_invitee_exists, :check_last_sent
+  validate :check_invitee_exists, :check_last_sent, on: :create
 
   ## Callbacks
   after_validation :assign_ref
-  after_save :send_mail
+  after_create :send_mail
 
   ## Etc.
   def prev_invite
