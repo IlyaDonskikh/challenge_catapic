@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :user do
-    email { |n| "mail#{n}@mail.com" }
-    password { |n| "verysecretpwd#{n}" }
+    email { generate(:email) }
+    password { generate(:password) }
 
     trait :confirmed do
       confirmed_at Time.now
