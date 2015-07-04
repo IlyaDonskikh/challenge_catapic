@@ -2,7 +2,7 @@ class InvitesController < ApplicationController
   before_filter :check_current_user
 
   def new
-    @invite = current_user.invites.new
+    @invite = Invite.new
   end
 
   def create

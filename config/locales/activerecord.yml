@@ -1,0 +1,10 @@
+en:
+  activerecord:
+    errors:
+      models:
+        invite:
+          attributes:
+            email:
+              user_registred: 'user already registred'
+            prev_invite:
+              often: 'sent less than a day ago'
