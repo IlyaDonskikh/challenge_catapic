@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class InviteFlowsTest < ActionDispatch::IntegrationTest
-  test "use invite, sign up and assign invite" do
+  test 'use invite, sign up and assign invite' do
     user = create(:user_with_invites, :confirmed)
     new_user_attrs = attributes_for(:user)
     invite = user.invites.last

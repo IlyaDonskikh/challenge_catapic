@@ -3,7 +3,7 @@ class CatsControllerTest < ActionController::TestCase
     @user = create(:user, :confirmed)
   end
 
-  test "should get index" do
+  test 'should get index' do
     sign_in @user
 
     get :index
@@ -11,7 +11,7 @@ class CatsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should not get index if current user = nil" do
+  test 'should not get index if current user = nil' do
     get :index
 
     assert_redirected_to new_user_session_path
