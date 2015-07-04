@@ -16,7 +16,9 @@ class Invite < ActiveRecord::Base
 
   ## Etc.
   def prev_invite
-    @prev_invite = Invite.where(email: email).last if email
+    return unless email && user
+
+    @prev_invite ||= user.invites.where(email: email).last
   end
 
   private
