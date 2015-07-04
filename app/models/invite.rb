@@ -47,6 +47,6 @@ class Invite < ActiveRecord::Base
     def check_last_sent
       return if !prev_invite || prev_invite.created_at + 1.day < Time.now
 
-      errors.add(:prev_invite, :often)
+      errors.add(:prev_invite, :sent)
     end
 end

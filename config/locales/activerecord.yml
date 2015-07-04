@@ -7,4 +7,4 @@ en:
             email:
               user_registred: 'user already registred'
             prev_invite:
-              often: 'sent less than a day ago'
+              sent: 'sent less than a day ago'
