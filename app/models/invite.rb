@@ -11,7 +11,7 @@ class Invite < ActiveRecord::Base
   validate :check_invitee_exists, :check_last_sent, on: :create
 
   ## Callbacks
-  after_validation :assign_ref
+  after_validation :assign_ref, on: :create
   after_create :send_mail
 
   ## Etc.
