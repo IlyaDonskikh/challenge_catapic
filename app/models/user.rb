@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   ## Etc.
   def assign_invite!(ref)
-    invite = Invite.find_by(invitee_id: nil, ref: ref)
+    invite = Invite.where(invitee_id: nil, ref: ref).last
 
     return unless invite
 

@@ -1,6 +1,4 @@
 class Invite < ActiveRecord::Base
-  attr_accessor :prev_invite
-
   ## Relations
   belongs_to :user
   belongs_to :invitee, class_name: 'User', foreign_key: 'invitee_id'
@@ -18,7 +16,9 @@ class Invite < ActiveRecord::Base
   def prev_invite
     return unless email && user
 
-    @prev_invite ||= user.invites.where(email: email).last
+    invites = user.invites.order('created_at DESC').where(email: email).limit(2)
+    num = id ? 1 : 0
+    invites[num]
   end
 
   private
