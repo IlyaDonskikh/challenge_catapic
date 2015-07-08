@@ -16,12 +16,13 @@ class Invite < ActiveRecord::Base
 
   ## Etc.
   def prev_invite
-    return @prev_invite if @prev_invite || !(email && user)
+    return unless email && user
 
-    invites = user.invites.order('created_at DESC').where(email: email).limit(2)
-    num = id ? 1 : 0
-
-    @prev_invite = invites[num]
+    @prev_invite ||= user.invites
+                     .where.not(id: id)
+                     .where(email: email)
+                     .order('created_at DESC')
+                     .first
   end
 
   def join_with_invitee!(user)
