@@ -1,9 +1,9 @@
 class RegistrationsController < Devise::RegistrationsController
-  after_filter :assing_invitee
+  after_filter :assing_invite
 
   protected
 
-    def assing_invitee
+    def assing_invite
       return unless resource.persisted?
 
       invite = Invite.order('created_at DESC')
