@@ -24,6 +24,10 @@ class Invite < ActiveRecord::Base
     @prev_invite = invites[num]
   end
 
+  def join_with_invitee!(user)
+    update(invitee_id: user.id)
+  end
+
   private
 
     def assign_ref
